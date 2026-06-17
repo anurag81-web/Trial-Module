@@ -1,6 +1,11 @@
+'use client';
 import Image from "next/image";
 
-export default function PostCard({ image, setOpenImage }) {
+interface PostCardProps {
+    image: string;
+    setOpenImage: (image: string) => void;
+}
+export default function PostCard({ image, setOpenImage }: PostCardProps) {
     return (
         <div className="flex flex-col mb-4 bg-gray-800 p-4 rounded-xl max-w-2xl mx-auto">
             <div className="flex flex-row gap-4 items-start">
