@@ -14,7 +14,7 @@ export default function Chart() {
     const [activeType, setActiveType] = useState("bar");
     const canvasRef = useRef(null);
     const chartRef = useRef(null);
-    const [ready, setReady] = useState(!!window.Chart);
+    const [ready, setReady] = useState(false);
     useEffect(() => {
         if (window.Chart) return;
         const s = document.createElement("script");

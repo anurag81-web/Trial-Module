@@ -33,19 +33,19 @@ export default function SideBar() {
                     </li>
                     <li>
                         <Link href="/parties" onClick={closeMenu} className="flex items-center gap-3 py-2 px-4 rounded hover:bg-[#3a3a3b] transition hover:cursor-pointer hover:text-[#BC7067]">
-                            <Image src="/icons/parties.png" alt="Dashboard" width={24} height={24} className="invert opacity-80 hover:opacity-100 transition " />
+                            <Image src="/icons/party.png" alt="Dashboard" width={24} height={24} className="invert opacity-80 hover:opacity-100 transition " />
                             {open && "Parties"}
                         </Link>
                     </li>
                     <li>
                         <Link href="/khata" onClick={closeMenu} className="flex items-center gap-3 py-2 px-4 rounded hover:bg-[#3a3a3b] transition hover:cursor-pointer hover:text-[#BC7067]">
-                            <Image src="/icons/khata.png" alt="Dashboard" width={24} height={24} className="invert opacity-80 hover:opacity-100 transition " />
+                            <Image src="/icons/account.png" alt="Dashboard" width={24} height={24} className="invert opacity-80 hover:opacity-100 transition " />
                             {open && "Khata"}
                         </Link>
                     </li>
                     <li>
                         <Link href="/expenses" onClick={closeMenu} className="flex items-center gap-3 py-2 px-4 rounded hover:bg-[#3a3a3b] transition hover:cursor-pointer hover:text-[#BC7067]">
-                            <Image src="/icons/expenses.png" alt="Dashboard" width={24} height={24} className="invert opacity-80 hover:opacity-100 transition " />
+                            <Image src="/icons/expense.png" alt="Dashboard" width={24} height={24} className="invert opacity-80 hover:opacity-100 transition " />
                             {open && "Expenses"}
                         </Link>
                     </li>
@@ -65,19 +65,19 @@ export default function SideBar() {
                     <hr className="border-t border-white/10 my-2" />
                     <li>
                         <Link href="/reports" onClick={closeMenu} className="flex items-center gap-3 py-2 px-4 rounded hover:bg-[#3a3a3b] transition hover:cursor-pointer hover:text-[#BC7067]">
-                            <Image src="/icons/reports.png" alt="Dashboard" width={24} height={24} className="invert opacity-80 hover:opacity-100 transition " />
+                            <Image src="/icons/report.png" alt="Dashboard" width={24} height={24} className="invert opacity-80 hover:opacity-100 transition " />
                             {open && "Reports"}
                         </Link>
                     </li>
                     <li>
                         <Link href="/groups" onClick={closeMenu} className="flex items-center gap-3 py-2 px-4 rounded hover:bg-[#3a3a3b] transition hover:cursor-pointer hover:text-[#BC7067]">
-                            <Image src="/icons/groups.png" alt="Dashboard" width={24} height={24} className="invert opacity-80 hover:opacity-100 transition " />
+                            <Image src="/icons/group.png" alt="Dashboard" width={24} height={24} className="invert opacity-80 hover:opacity-100 transition " />
                             {open && "Groups"}
                         </Link>
                     </li>
                     <li>
                         <Link href="/tools" onClick={closeMenu} className="flex items-center gap-3 py-2 px-4 rounded hover:bg-[#3a3a3b] transition hover:cursor-pointer hover:text-[#BC7067]">
-                            <Image src="/icons/tool.png" alt="Dashboard" width={24} height={24} className="invert opacity-80 hover:opacity-100 transition " />
+                            <Image src="/icons/tools.png" alt="Dashboard" width={24} height={24} className="invert opacity-80 hover:opacity-100 transition " />
                             {open && "Tools"}
                         </Link>
                     </li>

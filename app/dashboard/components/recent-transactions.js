@@ -61,11 +61,9 @@ export default function Transactions() {
                         </div>
                         <span className="text-red-400 font-semibold text-sm"> रु 1,00,500</span>
                     </div>
-
                 </div>
             </div>
         </>
-
     );
 
 }
