@@ -1,18 +1,29 @@
-import Navbar from './navbar/Navbar';
-import './globals.css';
+import { Providers } from "./components/theme-provider";
+import Navbar from "./navbar/Navbar";
+import AuthGuardWrapper from "./components/auth-guard-wrapper";
+import "./globals.css";
+
+export const metadata = {
+  title: "Mero Hisab",
+  description: "Personal finance and movie catalog management tracker",
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <Navbar />
-        <main>
-          {children}
-        </main>
+        <Providers>
+          <AuthGuardWrapper>
+            <Navbar />
+            <main>
+              {children}
+            </main>
+          </AuthGuardWrapper>
+        </Providers>
       </body>
     </html>
   );

@@ -6,11 +6,13 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import * as Label from "@radix-ui/react-label";
 import * as Separator from "@radix-ui/react-separator";
+import { useTheme } from "next-themes";
 
 export default function LoginPage() {
     const [phone, setPhone] = useState("");
     const [error, setError] = useState("");
     const router = useRouter();
+    const { resolvedTheme, setTheme } = useTheme();
 
     const handlePhoneChange = (e) => {
         setPhone(e.target.value.replace(/\D/g, "").slice(0, 10));
@@ -30,52 +32,59 @@ export default function LoginPage() {
         }
     };
 
-    return (
-        <div className="relative min-h-screen bg-[#161618] flex items-center justify-center px-4 overflow-hidden">
-            <div className="relative w-full max-w-[440px] bg-[#222124]/90 border border-white/[0.08] rounded-[2.5rem] p-8">
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") handleLogin();
+    };
 
-                <div className="flex justify-center items-center gap-3 mb-6">
-                    <Image src="/images/logo.png" width={48} height={48} alt="Logo" className="w-12 h-12 object-cover rounded-2xl" />
-                    <h1 className="text-xl sm:text-2xl font-semibold">
+    return (
+        <div className="auth-glow relative min-h-screen bg-background flex items-center justify-center px-4 overflow-hidden">
+
+            <button onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")} className="absolute top-5 right-5 h-9 w-9 rounded-full flex items-center justify-center bg-foreground/5 border border-border-color hover:bg-foreground/10 transition-all cursor-pointer text-base"
+                aria-label="Toggle theme">
+                {resolvedTheme === "dark" ? "☀️" : "🌙"}
+            </button>
+
+            <div className="relative w-full max-w-[420px] bg-card border border-border-color rounded-[2rem] p-8 shadow-xl">
+                <div className="flex justify-center items-center gap-3 mb-7">
+                    <Image src="/images/logo.png" width={44} height={44} alt="Logo" className="w-11 h-11 object-cover rounded-xl" />
+                    <h1 className="text-xl sm:text-2xl font-bold tracking-tight">
                         <span className="text-[#C4787A]">Mero</span>{" "}
                         <span className="text-[#f40047]">Hisab</span>
                     </h1>
                 </div>
 
-                <h2 className="text-xl sm:text-2xl font-semibold text-white mb-1">Login to continue</h2>
-                <p className="text-white/40 text-sm mb-6">Enter your mobile number to proceed</p>
+                <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-1">Login to continue</h2>
+                <p className="text-muted text-sm mb-7">Enter your mobile number to proceed</p>
 
                 <div className="space-y-4">
                     <div>
-                        <Label.Root className="text-white/40 text-xs mb-2 block">Phone Number</Label.Root>
-                        <div className="flex items-center bg-white/[0.04] border border-white/[0.08] rounded-2xl px-4 py-4 focus-within:border-white/20 transition">
-                            <span className="text-white/60 text-sm mr-3 select-none">+977</span>
-                            <input value={phone} onChange={handlePhoneChange} type="tel" placeholder="98XXXXXXXX"
-                                className="w-full bg-transparent text-white text-sm outline-none placeholder:text-white/20 tracking-wider"
-                            />
+                        <Label.Root className="text-muted text-xs mb-2 block font-medium tracking-wide">Phone Number</Label.Root>
+                        <div className="flex items-center bg-background border border-border-color rounded-2xl px-4 py-3.5 focus-within:border-blue-500/60 focus-within:ring-2 focus-within:ring-blue-500/20 transition-all">
+                            <span className="text-muted text-sm mr-3 select-none font-medium">+977</span>
+                            <div className="w-px h-4 bg-border-color mr-3 flex-shrink-0" />
+                            <input value={phone} onChange={handlePhoneChange} onKeyDown={handleKeyDown} type="tel" placeholder="98XXXXXXXX"
+                                className="w-full bg-transparent text-foreground text-sm outline-none placeholder:text-muted/50 tracking-wider caret-blue-500"/>
                         </div>
                     </div>
-
                     {error && (
-                        <p className="text-red-500 text-sm text-center">{error}</p>
+                        <p className="text-red-500 text-xs text-center font-medium">{error}</p>
                     )}
 
-                    <button
-                        onClick={handleLogin} className="w-full bg-[#C61515] hover:bg-[#ff054e] text-white font-semibold py-4 rounded-2xl active:scale-[0.98] transition">
+                    <button onClick={handleLogin}
+                        className="w-full bg-[#C61515] hover:bg-[#e01010] text-white font-semibold py-3.5 rounded-2xl active:scale-[0.98] transition-all cursor-pointer shadow-sm shadow-red-900/20">
                         Send OTP
                     </button>
 
-                    <div className="flex items-center gap-3 my-2">
-                        <Separator.Root className="flex-1 h-px bg-white/[0.06]" />
-                        <span className="text-white/20 text-xs">OR</span>
-                        <Separator.Root className="flex-1 h-px bg-white/[0.06]" />
+                    <div className="flex items-center gap-3 my-1">
+                        <Separator.Root className="flex-1 h-px bg-border-color" />
+                        <span className="text-muted/60 text-xs font-medium">OR</span>
+                        <Separator.Root className="flex-1 h-px bg-border-color" />
                     </div>
 
-                    <Link href="/signup" className="block text-center text-sm text-white/60 hover:text-white transition">
+                    <Link href="/signup" className="block text-center text-sm text-muted hover:text-foreground transition-colors">
                         Register new user
                     </Link>
                 </div>
-
             </div>
         </div>
     );
